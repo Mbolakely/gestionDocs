@@ -18,6 +18,13 @@ export type DoctorCardProps = {
 const DoctorCard: React.FC<DoctorCardProps> = ({ item, onEdit, onDelete }) => {
   const prestation = item.nb_jours * item.taux_journalier;
 
+    const formatBigAmount = (v: number) => {
+    if (v >= 1_000_000_000) return (v / 1_000_000_000).toFixed(1) + "Md";
+    if (v >= 1_000_000) return (v / 1_000_000).toFixed(1) + "M";
+    if (v >= 1_000) return (v / 1_000).toFixed(1) + "k";
+    return v.toString();
+  };
+
   return (
     <View style={styles.card}>
       <View style={styles.iconContainer}>
@@ -27,12 +34,12 @@ const DoctorCard: React.FC<DoctorCardProps> = ({ item, onEdit, onDelete }) => {
       <View style={styles.infoContainer}>
         <Text style={styles.doctorName}>{item.nom}</Text>
         <Text style={styles.specialtyText}>
-          {item.nb_jours} Jours • {item.taux_journalier}Ar/jour
+          {item.nb_jours} Jours • {formatBigAmount(item.taux_journalier)}Ar/jour
         </Text>
       </View>
 
       <View style={styles.priceContainer}>
-        <Text style={styles.amountText}>${prestation}</Text>
+        <Text style={styles.amountText}>{formatBigAmount(prestation)}Ar</Text>
         <Text style={styles.prestationLabel}>PRESTATION</Text>
       </View>
 

@@ -109,7 +109,7 @@ export default function AddDoctorScreen() {
 
               <TextInput
                 style={styles.input}
-                placeholder="Dr. Gregory House"
+                placeholder="Dr. Exemple"
                 value={form.nom}
                 onChangeText={(val) =>
                   setForm({ ...form, nom: val })
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', 
     justifyContent: 'space-between', 
     padding: 20, 
-    marginTop: 10,
+    marginTop: 20,
     alignItems: 'center' 
   },
   headerTitle: { fontSize: 18, fontWeight: '700', color: '#1a2b4b' },
