@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -13,6 +13,7 @@ import {
   ArrowUpRight,
   ArrowDownRight,
 } from "lucide-react-native";
+import { useFocusEffect } from "@react-navigation/native";
 
 const { width } = Dimensions.get("window");
 
@@ -59,10 +60,16 @@ export default function DashboardScreen() {
     }
   };
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   fetchDoctors();
+  //   fetchStats();
+  // }, []);
+  useFocusEffect(
+  useCallback(() => {
     fetchDoctors();
     fetchStats();
-  }, []);
+  }, [])
+);
 
   // Sécurisation des valeurs
   const chartMax = Math.max(

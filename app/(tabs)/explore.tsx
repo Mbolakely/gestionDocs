@@ -56,7 +56,7 @@ export default function AddDoctorScreen() {
 
       const data = await response.json();
 
-      Alert.alert("Success", "Doctor added successfully");
+      Alert.alert("Success", "Docteur ajouté avec succès");
 
       setForm({
         nom: "",

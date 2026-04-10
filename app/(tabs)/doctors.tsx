@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -12,6 +12,7 @@ import { User, Plus, ChevronLeft, ChevronRight } from "lucide-react-native";
 import ConfirmationModal from "@/components/modals/confirmation";
 import EditDoctorModal from "@/components/modals/editDocModal";
 import DoctorCard, { Medecin } from "@/components/cards/doctorCards";
+import { useFocusEffect } from "@react-navigation/native";
 
 const PER_PAGE = 10;
 
@@ -99,10 +100,14 @@ export default function DoctorsScreen() {
     setSelectedDoctor(null);
   };
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   fetchDoctors();
+  // }, []);
+useFocusEffect(
+  useCallback(() => {
     fetchDoctors();
-  }, []);
-
+  }, [])
+);
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
